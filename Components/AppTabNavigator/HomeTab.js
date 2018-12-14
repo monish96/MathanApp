@@ -10,6 +10,7 @@ import {
 
 import { Container, Content, Icon, Thumbnail, Header, Left, Right, Body } from 'native-base'
 import CardComponent from '../CardComponent'
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 class HomeTab extends Component {
 
@@ -28,7 +29,7 @@ class HomeTab extends Component {
                  
                     <Body style={[styles.androidHeaderTitle]}><Text>Praveen Mathan</Text></Body>
 
-                    <Right><Icon name="md-person-add" style={{ paddingRight: 10, fontSize: 32 }}></Icon></Right>
+                    <Right><EntypoIcon name="back-in-time" style={{ paddingRight: 10, fontSize: 32 }}></EntypoIcon></Right>
                 </Header>
                 <Content>
 

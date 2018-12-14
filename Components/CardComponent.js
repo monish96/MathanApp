@@ -22,7 +22,7 @@ class CardComponent extends Component {
 
             "4": require('../assets/feed_images/1.jpeg'),
             "2": require('../assets/feed_images/2.jpeg'),
-            "3": require('../assets/feed_images/3.jpeg')
+            "3": require('../assets/feed_images/4.jpeg')
         }
 
 
