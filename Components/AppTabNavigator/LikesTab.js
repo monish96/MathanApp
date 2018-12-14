@@ -9,9 +9,22 @@ import {
 import { Icon } from 'native-base';
 import CountDown from 'react-native-countdown-component';
 
-
+var DateDiff = require('date-diff')
 class LikesTab extends Component {
-
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            time_rem:'',
+           
+        }
+    }
+componentWillMount(){
+    var date1 = new Date(2019, 1, 9); // 2015-12-1
+    var date2 = new Date(); // 2014-01-1
+    var diff = new DateDiff(date1, date2);
+    diff.seconds(); // ===> 60393600
+    this.setState({time_rem:diff.seconds()})
+}
     static navigationOptions = {
 
         tabBarIcon: ({ tintColor }) => (
@@ -25,7 +38,7 @@ class LikesTab extends Component {
                 <ImageBackground source={require('../../assets/StoriesHeaderThumbnails/5.jpeg')} style={{width: '100%', height: '100%'}}>
                 <CountDown
                 timeToShow={['D', 'H', 'M', 'S']}
-        until={24*60*60+57}
+        until={this.state.time_rem}
         onFinish={() => alert('Function Is Already Over ! Now You Can Uninstall The App')}
         onPress={() => alert('hello')}
         size={20}

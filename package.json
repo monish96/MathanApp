@@ -2,6 +2,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "dependencies": {
+    "date-diff": "^0.2.1",
     "expo": "^25.0.0",
     "firebase": "^5.7.0",
     "native-base": "^2.3.7",
