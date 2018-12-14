@@ -9,16 +9,65 @@ import {
 
 import { Icon } from 'native-base';
 import { Container} from 'native-base';
-
+import firebase from 'firebase'
 class AddMediaTab extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            mail:'',
+            phone:'',
+            count:''
+        }
+    }
+    componentWillMount(){
 
+        var config = {
+            apiKey: "AIzaSyC_5-hLEHsMUXsmFxtTcqdCQ6zFeVaNrgo",
+      authDomain: "mathanapp-62abf.firebaseapp.com",
+      databaseURL: "https://mathanapp-62abf.firebaseio.com",
+      projectId: "mathanapp-62abf",
+      storageBucket: "mathanapp-62abf.appspot.com",
+      messagingSenderId: "759376390332"
+          };
+          if(!firebase.apps.length){
+            firebase.initializeApp(config);
+        }
+    }
     static navigationOptions = {
 
         tabBarIcon: ({ tintColor }) => (
             <Icon name="ios-add-circle" style={{ color: tintColor }} />
         )
     }
-
+   
+      handleEmail = (text) => {
+        this.setState({ mail: text })
+     }
+     handleMobile = (text) => {
+        this.setState({ phone: text })
+     }
+     handleCount = (text) => {
+        this.setState({ count: text })
+     }
+     submitname(){
+    
+        
+        
+            firebase.database().ref('user/'+this.state.mail).set({
+              email:this.state.mail,
+              phoneNo:this.state.phone,
+              count:this.state.count
+            }).then(()=>{
+                alert("Thanks "+this.state.mail+" We are eagerly waiting for your presence")
+                this.setState({mail:'',phone:'',count:''})
+                console.log('success');}).catch((error)=>{
+              console.log(error);
+            })
+        
+          
+       
+        
+     }
     render() {
         return (
             <Container>
@@ -36,10 +85,12 @@ class AddMediaTab extends Component {
         textAlign:'center',}}>Whether You Are Attending ?</Text>
           <TextInput style={styles.inputBox} 
             underlineColorAndroid='rgba(0,0,0,0)' 
-            placeholder="Email"
+            placeholder="Your Name"
             placeholderTextColor = "#ffffff"
             selectionColor="#fff"
             keyboardType="email-address"
+            value={this.state.mail}
+            onChangeText = {this.handleEmail}
             
             />
         <TextInput style={styles.inputBox} 
@@ -47,6 +98,8 @@ class AddMediaTab extends Component {
             placeholder="Phone Number"
             keyboardType="phone-pad"
             placeholderTextColor = "#ffffff"
+            value={this.state.phone}
+            onChangeText = {this.handleMobile}
             
             />  
             <TextInput style={styles.inputBox} 
@@ -54,9 +107,10 @@ class AddMediaTab extends Component {
             placeholder="Number Of Members Going To attend"
             keyboardType="phone-pad"
             placeholderTextColor = "#ffffff"
-            
+            value={this.state.count}
+            onChangeText = {this.handleCount}
             /> 
-         <TouchableOpacity style={styles.button}>
+         <TouchableOpacity style={styles.button} onPress={()=>  this.submitname()}>
            <Text style={styles.buttonText}>Submit</Text>
          </TouchableOpacity>  
          

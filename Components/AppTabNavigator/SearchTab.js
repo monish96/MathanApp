@@ -35,7 +35,7 @@ class SearchTab extends Component {
                 
 
                 
-                <ImageBackground source={require('../../assets/StoriesHeaderThumbnails/4.jpeg')} style={{width: '100%', height: '100%'}}>
+                <ImageBackground source={require('../../assets/StoriesHeaderThumbnails/8.jpeg')} style={{width: '100%', height: '100%'}}>
                 
                    
                         

@@ -25,7 +25,7 @@ class LikesTab extends Component {
                 <ImageBackground source={require('../../assets/StoriesHeaderThumbnails/5.jpeg')} style={{width: '100%', height: '100%'}}>
                 <CountDown
                 timeToShow={['D', 'H', 'M', 'S']}
-        until={5.098e+6}
+        until={24*60*60+57}
         onFinish={() => alert('Function Is Already Over ! Now You Can Uninstall The App')}
         onPress={() => alert('hello')}
         size={20}
